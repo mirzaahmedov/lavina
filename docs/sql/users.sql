@@ -1,0 +1,6 @@
+CREATE TABLE users (
+  id serial PRIMARY KEY,
+  name VARCHAR(250) NOT NULL,
+  key VARCHAR(250) NOT NULL UNIQUE,
+  secret VARCHAR(250) NOT NULL
+);

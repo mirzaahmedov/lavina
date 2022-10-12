@@ -1,0 +1,12 @@
+POST http://localhost:5000/signup
+
+{
+  "name": "Bekzod",
+  "key": "myAppKey",
+  "secret": "myAppSecret"
+}
+
+###
+GET http://localhost:5000/myself
+Key: myAppKey
+Sign: f67eef8faf5d381e3cbb07fff58cc67e
