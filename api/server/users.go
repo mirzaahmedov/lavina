@@ -10,7 +10,7 @@ import (
 	"github.com/mirzaahmedov/lavina/tools"
 )
 
-func (s *Server)SignUpHandler() http.HandlerFunc {
+func (s *Server)signUpHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var body types.User
 
@@ -55,7 +55,7 @@ func (s *Server)SignUpHandler() http.HandlerFunc {
 	}
 }
 
-func (s *Server) MySelfHandler() http.HandlerFunc {
+func (s *Server) mySelfHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		key := r.Header.Get("Key")
 		sign := r.Header.Get("Sign")

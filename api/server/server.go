@@ -28,8 +28,9 @@ func (s *Server)Start() error {
 		address = ":" + os.Getenv("PORT")
 	}
 
-	s.router.HandleFunc("/signup", s.SignUpHandler()).Methods("POST")
-	s.router.HandleFunc("/myself", s.MySelfHandler()).Methods("GET")
+	s.router.HandleFunc("/signup", s.signUpHandler()).Methods("POST")
+	s.router.HandleFunc("/myself", s.mySelfHandler()).Methods("GET")
+	s.router.HandleFunc("/books", s.createBookHandler()).Methods("POST")
 
 	log.Printf("Starting Server on %v", address)
 
