@@ -72,6 +72,7 @@ func (s *Server) getAllBooksHandler() http.HandlerFunc {
 		isAuth, userId := s.checkSign(r)
 		if !isAuth {
 			s.respondWithError(w, 401, "You Are Not Authorized")
+			return
 		}
 
 		books, err := s.repository.GetAllBooks(userId)
