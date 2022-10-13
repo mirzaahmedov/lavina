@@ -1,3 +1,29 @@
 POST http://localhost:5000/books
 Key: myAppKey
-Sign: 
+Sign: 909dfa9933cd0d424968e9764a0ca1a4
+
+{
+  "isbn":"9781118464465"
+}
+
+
+###
+GET http://localhost:5000/books
+Key: myAppKey
+Sign: ceaee380ed783dfa2542a194db12ce3b
+
+
+###
+DELETE http://localhost:5000/books/1
+Key: myAppKey
+Sign: 4477cc208ceedd9e1de3e2fdb52f506b
+
+
+###
+PATCH http://localhost:5000/books/1
+Key: myAppKey
+Sign: 6ecae189532ee5abc1014ddd044a6e27
+
+{
+  "wow": true
+}
