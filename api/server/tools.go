@@ -6,7 +6,6 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"io"
-	"log"
 	"net/http"
 	"strings"
 	"unicode"
@@ -52,8 +51,6 @@ func (s *Server)checkSign(r *http.Request) (bool, int)  {
 		}
 		r.Body = io.NopCloser(bytes.NewBuffer(body))
 
-		protocol := "http"
-
 		body = []byte(strings.Map(func(r rune) rune {
 			if unicode.IsSpace(r) {
 					return -1
@@ -61,13 +58,7 @@ func (s *Server)checkSign(r *http.Request) (bool, int)  {
 			return r
 		}, string(body)))
 
-		if r.TLS != nil {
-			protocol += "s"
-		}
-
-		payload := r.Method + protocol + "://" + r.Host + r.RequestURI + string(body) + user.Secret
-
-		log.Println(r.URL.Scheme)
+		payload := r.Method + "https" + "://" + r.Host + r.RequestURI + string(body) + user.Secret
 
 		sum := make([]byte, 16)
 		if _, err := hex.Decode(sum, []byte(sign)); err != nil {
