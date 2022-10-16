@@ -2,6 +2,7 @@ package server
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 
 	"github.com/mirzaahmedov/lavina/api/types"
@@ -29,6 +30,7 @@ func (s *Server)signUpHandler() http.HandlerFunc {
 
 func (s *Server) mySelfHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		log.Println(r)
 		isAuth,_ := s.checkSign(r)
 		if !isAuth {
 			s.respondWithError(w, 401, "You Are Not Auhtorized")
