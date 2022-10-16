@@ -67,7 +67,7 @@ func (s *Server)checkSign(r *http.Request) (bool, int)  {
 
 		payload := r.Method + protocol + "://" + r.Host + r.RequestURI + string(body) + user.Secret
 
-		log.Println(payload)
+		log.Println(r.TLS)
 
 		sum := make([]byte, 16)
 		if _, err := hex.Decode(sum, []byte(sign)); err != nil {
