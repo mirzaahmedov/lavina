@@ -6,6 +6,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"io"
+	"log"
 	"net/http"
 	"strings"
 	"unicode"
@@ -65,6 +66,8 @@ func (s *Server)checkSign(r *http.Request) (bool, int)  {
 		}
 
 		payload := r.Method + protocol + "://" + r.Host + r.RequestURI + string(body) + user.Secret
+
+		log.Println(payload)
 
 		sum := make([]byte, 16)
 		if _, err := hex.Decode(sum, []byte(sign)); err != nil {
