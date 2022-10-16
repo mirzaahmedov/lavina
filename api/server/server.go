@@ -21,14 +21,14 @@ func New(repository *repository.Repository) *Server {
 	}
 }
 
-func logger(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+// func logger(next http.Handler) http.Handler {
+// 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		
-		log.Println(r)
+// 		log.Println(r)
 
-		next.ServeHTTP(w, r)
-	})
-}
+// 		next.ServeHTTP(w, r)
+// 	})
+// }
 
 func (s *Server)Start() error {
 	var address string = ":5000"
@@ -37,7 +37,7 @@ func (s *Server)Start() error {
 		address = ":" + os.Getenv("PORT")
 	}
 
-	s.router.Use(logger)
+	// s.router.Use(logger)
 	
 	s.router.HandleFunc("/signup", s.signUpHandler()).Methods("POST")	
 	s.router.HandleFunc("/myself", s.mySelfHandler()).Methods("GET")
